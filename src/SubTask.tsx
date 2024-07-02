@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import trashIcon from "./assets/trash.svg";
 
 interface SubTaskProps {
 	id: number;
@@ -33,7 +34,7 @@ const SubTask: FC<SubTaskCoumunicationProps> = (props) => {
 			<input className="subtask-checkbox" type="checkbox" onChange={() => {setIsSubTaskDone(!isSubTaskDone); updateSubTask(); }} checked={isSubTaskDone} />
 			<span className="subtask-name">{props.name}</span>
 			<div className="subtask-free-space"></div>
-			<img src="src/icons/trash.svg" alt="Trash Icon" className="subtask-trash-icon" onClick={removeSelf}/>
+			<img src={trashIcon} alt="Trash Icon" className="subtask-trash-icon" onClick={removeSelf}/>
 		</div>
 	)
 }

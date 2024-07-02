@@ -1,4 +1,5 @@
 import { FC } from "react";
+import trashIcon from "./assets/trash.svg";
 
 interface TaskListSideBarProps {
     id: number;
@@ -21,7 +22,7 @@ const TaskListSideBar: FC<TaskListSideBarProps> = (props) => {
         <div className="task-list-element-side-bar" >
             <span className="task-list-name-side-bar" onClick={onTaskListSideBarClick}>{props.name}</span>
             <div className="task-list-click-area" onClick={onTaskListSideBarClick}></div>
-            <img src="src/icons/trash.svg" alt="Trash Icon" className="trash-icon" onClick={removeSelf}/>
+            <img src={trashIcon} alt="Trash Icon" className="trash-icon" onClick={removeSelf}/>
         </div>
     )
 }

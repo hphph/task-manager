@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
 import App from "./App";
 import './App.css';
+import homeIcon from './assets/home.svg';
 
 function Layout() {
     return (
@@ -10,7 +11,7 @@ function Layout() {
             <div className='page'>
                 <header className='top-header'>
 					<Link to="/" className='home-link'>
-                        <img src='src/icons/home.svg' alt='Home' className='header-home-icon'></img>
+                        <img src={homeIcon} alt='Home' className='header-home-icon'></img>
                     </Link>
                 </header>
                 <Routes>

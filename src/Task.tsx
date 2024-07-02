@@ -2,6 +2,7 @@ import SubTask from "./SubTask";
 import NewSubTask from "./NewSubTask";
 import { FC, useEffect, useState } from "react";
 import { SubTaskProps } from "./SubTask";
+import trashIcon from "./assets/trash.svg";
 
 interface TaskProps {
 	id: number;
@@ -59,7 +60,7 @@ const Task: FC<TaskCommunicationProps> = (props) => {
 				<input className="task-checkbox" type="checkbox" onChange={() => setIsTaskDone(!isTaskDone)} checked={isTaskDone} />
 				<span className="task-name">{props.name}</span>
 				<div className="task-free-space"></div>
-				<img src="src/icons/trash.svg" alt="Trash Icon" className="task-trash-icon" onClick={removeSelf}/>
+				<img src={trashIcon} alt="Trash Icon" className="task-trash-icon" onClick={removeSelf}/>
 			</div>
 			<div className="subtasks-list">
 				{subTasks.map((task) => <SubTask name={task.name} key={task.id} isCompleted={task.isCompleted} id={task.id} onSubTaskUpdate={onSubTaskUpdate} removeSubTask={removeSubTask}/>)}
