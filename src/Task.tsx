@@ -65,7 +65,7 @@ const Task: FC<TaskCommunicationProps> = (props) => {
 			<div className="subtasks-list">
 				{subTasks.map((task) => <SubTask name={task.name} key={task.id} isCompleted={task.isCompleted} id={task.id} onSubTaskUpdate={onSubTaskUpdate} removeSubTask={removeSubTask}/>)}
 			</div>
-			<NewSubTask addNewSubTask={addNewSubTask}/>
+			{!isTaskDone ? <NewSubTask addNewSubTask={addNewSubTask}/> : null}
 		</div>
 	)
 }

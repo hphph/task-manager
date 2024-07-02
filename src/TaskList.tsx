@@ -51,9 +51,18 @@ const TaskList: FC<TaskListPropsCommunication> = (props) => {
 			<section className="tasklist-element">
 				<span className="tasklist-name">{taskListName}</span>
 				<div className="tasks-list">
-					{taskList.map((task) => <Task name={task.name} key={task.id} isCompleted={task.isCompleted} subTasks={task.subTasks} id={task.id} onTaskUpdate={onTaskUpdate} removeTask={removeTask}/>)}
+					{taskList.map((task) => {
+						if(!task.isCompleted)
+							return <Task name={task.name} key={task.id} isCompleted={task.isCompleted} subTasks={task.subTasks} id={task.id} onTaskUpdate={onTaskUpdate} removeTask={removeTask}/>
+					})}
 				</div>
 				<NewTask addNewTask={addNewTask}/>
+				<span className="tasklist-name">Done Tasks</span>
+				<div className="done-tasks-list">
+					{taskList.map((task) => {
+					if(task.isCompleted) return <Task name={task.name} key={task.id} isCompleted={task.isCompleted} subTasks={task.subTasks} id={task.id} onTaskUpdate={onTaskUpdate} removeTask={removeTask}/>
+					})}
+				</div>
 			</section>
 		</div>
 	)
