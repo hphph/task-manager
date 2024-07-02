@@ -1,6 +1,7 @@
 # Task manager
 
 Projekt zaliczeniowy na przedmiot Tworzenie nowoczesnych aplikacji frontendowych 2023/2024.
+
 [Live Preview](https://hphph.github.io/task-manager)
 
 ![Widok apki](page_screen.jpg)
