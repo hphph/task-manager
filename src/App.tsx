@@ -1,10 +1,8 @@
 import './App.css'
 import TaskListsSideBar from './TaskListsSideBar';
 import TaskList from './TaskList';
-import Contact from './Contact';
 import { TaskListProps } from './TaskList';
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 function App(): JSX.Element {
 	const [currentTaskListId, setCurrentTaskListId] = useState<number>(1);
@@ -22,7 +20,6 @@ function App(): JSX.Element {
 	const addNewTaskList = (taskListName: string) => {
 		setTaskLists([...taskLists, {name: taskListName, tasks: [], id: currentTaskListId}]);
 		setCurrentTaskListId(currentTaskListId + 1);
-		console.log(taskLists);
 	}
 
 	const removeTaskList = (taskListId: number) => {

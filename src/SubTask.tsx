@@ -12,28 +12,26 @@ interface SubTaskCoumunicationProps extends SubTaskProps {
 }
 
 const SubTask: FC<SubTaskCoumunicationProps> = (props) => {
-	const [subTask, setSubTask] = useState<string>(props.name);
 	const [isSubTaskDone, setIsSubTaskDone] = useState<boolean>(props.isCompleted);
 
 
 	const updateSubTask = () => {
-		props.onSubTaskUpdate({id: props.id, name: subTask, isCompleted: isSubTaskDone});
+		props.onSubTaskUpdate({id: props.id, name: props.name, isCompleted: isSubTaskDone});
 	}
 
 	const removeSelf = () => {
-		console.log("Remove " + subTask);
 		props.removeSubTask(props.id);
 	}
 
 	useEffect(() => {
 		updateSubTask();
-	}, [subTask, isSubTaskDone]);
+	}, [isSubTaskDone]);
 
 
 	return (
 		<div className="subtask-element">
 			<input className="subtask-checkbox" type="checkbox" onChange={() => {setIsSubTaskDone(!isSubTaskDone); updateSubTask(); }} checked={isSubTaskDone} />
-			<span className="subtask-name">{subTask}</span>
+			<span className="subtask-name">{props.name}</span>
 			<div className="subtask-free-space"></div>
 			<img src="src/icons/trash.svg" alt="Trash Icon" className="subtask-trash-icon" onClick={removeSelf}/>
 		</div>

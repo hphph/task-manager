@@ -15,7 +15,6 @@ interface TaskListPropsCommunication extends TaskListProps {
 
 const TaskList: FC<TaskListPropsCommunication> = (props) => {
 	const [taskList, setTaskList] = useState<TaskProps[]>(props.tasks);
-	const [taskListName, setTaskListName] = useState<string>(props.name);
 	const [id, setId] = useState<number>(1);
 
 	const addNewTask = (taskName: string) => {
@@ -29,7 +28,7 @@ const TaskList: FC<TaskListPropsCommunication> = (props) => {
 	}
 
 	const taskListUpdate = () => {
-		props.onTaskListUpdate({id: props.id, name: taskListName, tasks: taskList});
+		props.onTaskListUpdate({id: props.id, name: props.name, tasks: taskList});
 	}
 
 	const onTaskUpdate = (task: TaskProps) => {
@@ -44,12 +43,12 @@ const TaskList: FC<TaskListPropsCommunication> = (props) => {
 
 	useEffect(() => {
 		taskListUpdate();
-	}, [taskList, taskListName, id]);
+	}, [taskList, id]);
 
 	return (
 		<div className="tasklist-container">
 			<section className="tasklist-element">
-				<span className="tasklist-name">{taskListName}</span>
+				<span className="tasklist-name">{props.name}</span>
 				<div className="tasks-list">
 					{taskList.map((task) => {
 						if(!task.isCompleted)

@@ -17,12 +17,11 @@ interface TaskCommunicationProps extends TaskProps {
 
 const Task: FC<TaskCommunicationProps> = (props) => {
 	const [taskCurrentId, setTaskCurrentId] = useState<number>(0);
-	const [task, setTask] = useState<string>(props.name);
 	const [isTaskDone, setIsTaskDone] = useState<boolean>(props.isCompleted);
 	const [subTasks, setSubTasks] = useState<SubTaskProps[]>(props.subTasks);
 
 	const updateTask = () => {
-		props.onTaskUpdate({id: props.id, name: task, isCompleted: isTaskDone, subTasks: subTasks});
+		props.onTaskUpdate({id: props.id, name: props.name, isCompleted: isTaskDone, subTasks: subTasks});
 	};
 
 	const addNewSubTask = (subtaskName: string, subtaskIsCompleted: boolean) => {
@@ -46,19 +45,19 @@ const Task: FC<TaskCommunicationProps> = (props) => {
 	}
 
 	const removeSelf = () => {
-		console.log("Remove " + task);
+		console.log("Remove " + props.name);
 		props.removeTask(props.id);
 	}
 
 	useEffect(() => {
 		updateTask();
-	}, [task, isTaskDone, subTasks, taskCurrentId]);
+	}, [isTaskDone, subTasks, taskCurrentId]);
 
 	return (
 		<div className="task-element">
 			<div className="task-header">
 				<input className="task-checkbox" type="checkbox" onChange={() => setIsTaskDone(!isTaskDone)} checked={isTaskDone} />
-				<span className="task-name">{task}</span>
+				<span className="task-name">{props.name}</span>
 				<div className="task-free-space"></div>
 				<img src="src/icons/trash.svg" alt="Trash Icon" className="task-trash-icon" onClick={removeSelf}/>
 			</div>
