@@ -18,14 +18,14 @@ body {
 	grid-column: 1;
 	display: flex;
 	flex-direction: column;
-	padding-right: 5px;
+	background-color: #161616;
 }
 
 @media only screen and (max-width: 768px) {
 	.task-page {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 
 	.task-list-side-bar {
@@ -220,4 +220,32 @@ body {
 	align-items: center;
 	text-decoration: line-through;
 	color: #444444;
+}
+
+.top-header {
+	background-color: #0f0f0f;
+	height: 45px;
+}
+
+.header-home-icon {
+	padding: 5px;
+	width: 35px;
+}
+
+.page {
+	margin: 0;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.bottom-footer {
+	height: 30px;
+	background-color: #0f0f0f;
+	display: flex;
+	font-size: 16px;
+	color: #444444;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	align-items: center;
 }
