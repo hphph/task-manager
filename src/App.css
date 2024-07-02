@@ -249,3 +249,54 @@ body {
 	font-family: 'Roboto', sans-serif;
 	align-items: center;
 }
+
+.contact-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background-color: #161616;
+	color: #c9c9c9;
+}
+
+.contact-title {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.contact-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 300px;
+}
+
+.contact-input {
+	padding: 5px;
+	border: none;
+	background-color: #444444;
+	color: #c9c9c9;
+	font-size: 16px;
+}
+
+.contact-input:focus {
+	outline: none;
+}
+
+.contact-button {
+	border: none;
+	font-size: 20px;
+	color: #c9c9c9;
+	background-color: #9c3c3c;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.contact-button:hover {
+	background-color: #7c2c2c;
+}
+
+.contact-button:active {
+	background-color: #5c1c1c;
+}
