@@ -6,7 +6,7 @@ Projekt zaliczeniowy na przedmiot Tworzenie nowoczesnych aplikacji frontendowych
 ![Widok apki](page_screen.jpg)
 
 ## Opis
-Apka służy do zarządzenia wieloma to-do listami. Wykorzystane technologie to React, Typescript oraz React Router. Typescript ułatwił pracę z wieloma abstrakcyjnymi obiektami. React Router ułatwił dodanie formularza kontaktowego z walidacją. Strona jest interaktywna, w pełni ostylowana i responsywna, można z niej korzystać zarówno na komputrze jak i na urządzeniu mobilnym. Do stylownia wykorzystany jest Grid i Flex.
+Apka służy do zarządzenia wieloma to-do listami. Wykorzystane technologie to React, Typescript oraz React Router. Typescript ułatwił pracę z wieloma abstrakcyjnymi obiektami. React Router pozwolił na dodanie podstrony z formularzem kontaktowym z walidacją. Strona jest interaktywna, w pełni ostylowana i responsywna, można z niej korzystać zarówno na komputrze jak i na urządzeniu mobilnym. Do stylownia wykorzystany jest Grid i Flex.
 
 ## Instalacja
 Aby zainstalować aplikację należy sklonować repo, a następnie zainstalować zależności.
