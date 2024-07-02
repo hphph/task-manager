@@ -38,6 +38,9 @@ body {
 }
 
 .task-list-element-side-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	color: #c9c9c9;
 	background-color: #222222;
 	cursor: pointer;
@@ -48,12 +51,6 @@ body {
 	background-color: #444444;
 }
 
-.new-task-list-element {
-	cursor: pointer;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
-}
 
 .new-task-list-input-text {
 	width: 100%;
@@ -74,6 +71,11 @@ body {
 	margin: -5px;
 	color: #c9c9c9;
 	background-color: #9c3c3c;
+}
+
+.task-list-click-area
+{
+	flex-grow: 10;
 }
 
 .tasklist-container {
@@ -106,9 +108,22 @@ body {
 }
 
 .subtask-element {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
 	padding: 2px;
 	padding-left: 30px;
 	font-size: 18px;
+}
+
+.subtask-trash-icon {
+	cursor: pointer;
+	height: 16px;
+}
+
+.subtask-free-space {
+	flex-basis: 10px;
 }
 
 .tasklist-name {
@@ -171,12 +186,26 @@ body {
 
 .task-checkbox {
 	cursor: pointer;
-	width: 15px;
-	height: 15px;
+	width: 20px;
+	height: 20px;
 }
 
 .task-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 5px;
 	padding: 5px;
+}
+
+.task-trash-icon {
+	cursor: pointer;
+	height: 20px;
+}
+
+.task-free-space {
+	flex-basis: 10px;
 }
 
 .task-name {

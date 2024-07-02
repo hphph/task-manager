@@ -2,17 +2,15 @@ import './App.css'
 import TaskListsSideBar from './TaskListsSideBar';
 import TaskList from './TaskList';
 import { TaskListProps } from './TaskList';
-import { TaskListSideBarProps } from './TaskListSideBar';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 function App(): JSX.Element {
-	const [currentTaskListId, setCurrentTaskListId] = useState<number>(0);
+	const [currentTaskListId, setCurrentTaskListId] = useState<number>(1);
 	const [taskLists, setTaskLists] = useState<TaskListProps[]>([{name: "Current Tasklist", tasks: [], id: 0}]);
 	const [currentTaskListState, setCurrentTaskListState] = useState<TaskListProps>(taskLists[0]);
 
 	const changeCurrentTaskList = (currentTaskId: number) => {
-		setCurrentTaskListId(currentTaskId);
 		setCurrentTaskListState(currentTaskList(currentTaskId));
 	}
 
@@ -21,7 +19,23 @@ function App(): JSX.Element {
 	}
 
 	const addNewTaskList = (taskListName: string) => {
-		setTaskLists([...taskLists, {name: taskListName, tasks: [], id: taskLists.length}]);
+		setTaskLists([...taskLists, {name: taskListName, tasks: [], id: currentTaskListId}]);
+		setCurrentTaskListId(currentTaskListId + 1);
+		console.log(taskLists);
+	}
+
+	const removeTaskList = (taskListId: number) => {
+		if(taskLists.length > 1) {
+			if (taskListId === currentTaskListState.id && taskLists[0].id !== taskListId) {
+				setCurrentTaskListState(taskLists[0]);
+			}
+			else if(taskListId === currentTaskListState.id && taskLists[0].id === taskListId)
+			{
+				setCurrentTaskListState(taskLists[1]);
+			}
+			const updatedTaskLists = taskLists.filter((taskList) => taskList.id !== taskListId);
+			setTaskLists(updatedTaskLists);
+		}
 	}
 
 	const onTaskListUpdate = (taskList: TaskListProps) => {
@@ -36,7 +50,7 @@ function App(): JSX.Element {
 
 	return (
 		<div className='task-page'>
-			<TaskListsSideBar onTaskListSideBarClick={changeCurrentTaskList} addNewTaskList={addNewTaskList} taskLists={taskLists}/>
+			<TaskListsSideBar onTaskListSideBarClick={changeCurrentTaskList} addNewTaskList={addNewTaskList} taskLists={taskLists} removeTaskList={removeTaskList}/>
 			<TaskList name={currentTaskListState.name} tasks={currentTaskListState.tasks} id={currentTaskListState.id} key={currentTaskListState.id} onTaskListUpdate={onTaskListUpdate}/>
 		</div>
 	)

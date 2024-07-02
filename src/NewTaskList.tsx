@@ -20,10 +20,8 @@ const NewTaskList: FC<NewTaskListProps> = (props) => {
 
     return (
         <div className="task-list-element-side-bar">
-            <div className="new-task-list-element">
-                <input className="new-task-list-input-text" type="text" placeholder="New task list name" value={newTaskListName} onChange={handleNewTaskListNameChange}/>
-                <button className="new-task-list-button" onClick={addNewTaskList}>+</button>
-            </div>
+            <input className="new-task-list-input-text" type="text" placeholder="New task list name" value={newTaskListName} onChange={handleNewTaskListNameChange}/>
+            <button className="new-task-list-button" onClick={addNewTaskList}>+</button>
         </div>
     )
 }

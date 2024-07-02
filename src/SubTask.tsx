@@ -8,6 +8,7 @@ interface SubTaskProps {
 
 interface SubTaskCoumunicationProps extends SubTaskProps {
 	onSubTaskUpdate: (subTask: SubTaskProps) => void;
+	removeSubTask: (subTaskId: number) => void;
 }
 
 const SubTask: FC<SubTaskCoumunicationProps> = (props) => {
@@ -19,6 +20,11 @@ const SubTask: FC<SubTaskCoumunicationProps> = (props) => {
 		props.onSubTaskUpdate({id: props.id, name: subTask, isCompleted: isSubTaskDone});
 	}
 
+	const removeSelf = () => {
+		console.log("Remove " + subTask);
+		props.removeSubTask(props.id);
+	}
+
 	useEffect(() => {
 		updateSubTask();
 	}, [subTask, isSubTaskDone]);
@@ -28,6 +34,8 @@ const SubTask: FC<SubTaskCoumunicationProps> = (props) => {
 		<div className="subtask-element">
 			<input className="subtask-checkbox" type="checkbox" onChange={() => {setIsSubTaskDone(!isSubTaskDone); updateSubTask(); }} checked={isSubTaskDone} />
 			<span className="subtask-name">{subTask}</span>
+			<div className="subtask-free-space"></div>
+			<img src="src/icons/trash.svg" alt="Trash Icon" className="subtask-trash-icon" onClick={removeSelf}/>
 		</div>
 	)
 }

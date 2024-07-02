@@ -23,6 +23,11 @@ const TaskList: FC<TaskListPropsCommunication> = (props) => {
 		setId(id + 1);
 	}
 
+	const removeTask = (taskId: number) => {
+		const updatedTasks = taskList.filter((task) => task.id !== taskId);
+		setTaskList(updatedTasks);
+	}
+
 	const taskListUpdate = () => {
 		props.onTaskListUpdate({id: props.id, name: taskListName, tasks: taskList});
 	}
@@ -39,14 +44,14 @@ const TaskList: FC<TaskListPropsCommunication> = (props) => {
 
 	useEffect(() => {
 		taskListUpdate();
-	}, [taskList, taskListName]);
+	}, [taskList, taskListName, id]);
 
 	return (
 		<div className="tasklist-container">
 			<section className="tasklist-element">
 				<span className="tasklist-name">{taskListName}</span>
 				<div className="tasks-list">
-					{taskList.map((task) => <Task name={task.name} key={task.id} isCompleted={task.isCompleted} subTasks={task.subTasks} id={task.id} onTaskUpdate={onTaskUpdate}/>)}
+					{taskList.map((task) => <Task name={task.name} key={task.id} isCompleted={task.isCompleted} subTasks={task.subTasks} id={task.id} onTaskUpdate={onTaskUpdate} removeTask={removeTask}/>)}
 				</div>
 				<NewTask addNewTask={addNewTask}/>
 			</section>
