@@ -12,7 +12,7 @@ Apka służy do zarządzenia wieloma to-do listami. Wykorzystane technologie to 
 ## Instalacja
 Aby zainstalować aplikację należy sklonować repo, a następnie zainstalować zależności.
 ```
-git clone https://github.com/hphph/task-manager.git
+git clone https://github.com/hphph/task-manager
 cd task-manager
 npm install
 ```
