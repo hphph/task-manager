@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# Task manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projekt zaliczeniowy na przedmiot Tworzenie nowoczesnych aplikacji frontendowych 2023/2024.
+![Live Preview](https://hphph.github.io/task-manager)
 
-Currently, two official plugins are available:
+![Widok apki](page_screen.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Opis
+Apka służy do zarządzenia wieloma to-do listami. Wykorzystane technologie to React, Typescript oraz React Router. Typescript ułatwił pracę z wieloma abstrakcyjnymi obiektami. React Router ułatwił dodanie formularza kontaktowego z walidacją. Strona jest interaktywna, w pełni ostylowana i responsywna, można z niej korzystać zarówno na komputrze jak i na urządzeniu mobilnym. Do stylownia wykorzystany jest Grid i Flex.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Instalacja
+Aby zainstalować aplikację należy sklonować repo, a następnie zainstalować zależności.
+```
+git clone https://github.com/hphph/task-manager.git
+cd task-manager
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Następnie trzeba uruchomić serwer z aplikacją.
+```
+npm run dev
+```
+W terminalu pojawi się adres ip wraz z portem na którym serwer wystartował.
