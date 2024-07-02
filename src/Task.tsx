@@ -17,9 +17,15 @@ interface TaskCommunicationProps extends TaskProps {
 }
 
 const Task: FC<TaskCommunicationProps> = (props) => {
-	const [taskCurrentId, setTaskCurrentId] = useState<number>(0);
-	const [isTaskDone, setIsTaskDone] = useState<boolean>(props.isCompleted);
 	const [subTasks, setSubTasks] = useState<SubTaskProps[]>(props.subTasks);
+	let biggestId = 0;
+	subTasks.forEach((task) => {
+		if (task.id > biggestId) {
+			biggestId = task.id;
+		}
+	});
+	const [taskCurrentId, setTaskCurrentId] = useState<number>(biggestId + 1);
+	const [isTaskDone, setIsTaskDone] = useState<boolean>(props.isCompleted);
 
 	const updateTask = () => {
 		props.onTaskUpdate({id: props.id, name: props.name, isCompleted: isTaskDone, subTasks: subTasks});

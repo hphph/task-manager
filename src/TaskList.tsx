@@ -15,7 +15,13 @@ interface TaskListPropsCommunication extends TaskListProps {
 
 const TaskList: FC<TaskListPropsCommunication> = (props) => {
 	const [taskList, setTaskList] = useState<TaskProps[]>(props.tasks);
-	const [id, setId] = useState<number>(1);
+	let biggestId = 0;
+	taskList.forEach((task) => {
+		if (task.id > biggestId) {
+			biggestId = task.id;
+		}
+	});
+	const [id, setId] = useState<number>(biggestId + 1);
 
 	const addNewTask = (taskName: string) => {
 		setTaskList([...taskList, {name: taskName, isCompleted: false, subTasks: [], id: id}]);
