@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
 import App from "./App";
 import './App.css';
@@ -7,7 +7,7 @@ import homeIcon from './assets/home.svg';
 function Layout() {
     return (
     <>
-        <BrowserRouter>
+        <HashRouter>
             <div className='page'>
                 <header className='top-header'>
 					<Link to="/" className='home-link'>
@@ -22,7 +22,7 @@ function Layout() {
 					<Link to="/contact" className='contact-link'>Contact</Link>
 			    </footer>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     </>
     );
 }
