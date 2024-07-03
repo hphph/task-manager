@@ -5,21 +5,20 @@ import './App.css';
 import homeIcon from './assets/home.svg';
 import { useCookies } from "react-cookie";
 import { TaskListProps } from "./TaskList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Layout() {
 	const [cookieTaskLists, setcookieTaskLists] = useCookies(['taskLists']);
+	let initialTaskLists: TaskListProps[] = [{name: "Current Tasklist", tasks: [], id: 0}];
+	if (cookieTaskLists.taskLists) {
+		initialTaskLists = cookieTaskLists.taskLists;
+	}
+	const [taskLists, setTaskLists] = useState<TaskListProps[]>(initialTaskLists);
 
 	const onTaskListsUpdate = (taskLists: TaskListProps[]) => {
+		setTaskLists(taskLists);
 		setcookieTaskLists('taskLists', taskLists);
 	}
-
-	useEffect(() => {
-		console.log(cookieTaskLists.taskLists);
-		if (!cookieTaskLists.taskLists) {
-			setcookieTaskLists('taskLists', [{name: "Current Tasklist", tasks: [], id: 0}]);
-		}
-	}, []);
 
 	return (
 	<>
@@ -31,7 +30,7 @@ function Layout() {
 					</Link>
 				</header>
 				<Routes>
-					<Route path="/" element={<App taskLists={cookieTaskLists.taskLists} onTaskListsUpdate={onTaskListsUpdate}/>}/>
+					<Route path="/" element={<App taskLists={taskLists} onTaskListsUpdate={onTaskListsUpdate}/>}/>
 					<Route path="/contact" element={<Contact />}/>
 				</Routes>
 				<footer className='bottom-footer'>
