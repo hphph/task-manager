@@ -5,7 +5,7 @@ import './App.css';
 import homeIcon from './assets/home.svg';
 import { useCookies } from "react-cookie";
 import { TaskListProps } from "./TaskList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Layout() {
 	const [cookieTaskLists, setcookieTaskLists] = useCookies(['taskLists']);
