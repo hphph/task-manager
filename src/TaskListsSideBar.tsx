@@ -12,7 +12,13 @@ interface TaskListsSideBarProps {
 
 const TaskListsSideBar: FC<TaskListsSideBarProps> = (props) => {
 	const [taskLists, setTaskLists] = useState<TaskListProps[]>(props.taskLists);
-	const [id, setId] = useState<number>(1);
+	let biggestId = 0;
+	props.taskLists.forEach((taskList) => {
+		if (taskList.id > biggestId) {
+			biggestId = taskList.id;
+		}
+	});
+	const [id, setId] = useState<number>(biggestId+1);
 
 	const addNewTaskList = (taskListName: string) => {
 		setTaskLists([...taskLists, {name: taskListName, tasks: [], id: id}]);

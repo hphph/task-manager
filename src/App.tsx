@@ -2,11 +2,22 @@ import './App.css'
 import TaskListsSideBar from './TaskListsSideBar';
 import TaskList from './TaskList';
 import { TaskListProps } from './TaskList';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
-function App(): JSX.Element {
-	const [currentTaskListId, setCurrentTaskListId] = useState<number>(1);
-	const [taskLists, setTaskLists] = useState<TaskListProps[]>([{name: "Current Tasklist", tasks: [], id: 0}]);
+interface AppProps {
+	taskLists: TaskListProps[];
+	onTaskListsUpdate: (taskLists: TaskListProps[]) => void;
+}
+
+const App: FC<AppProps> = (props) => {
+	let biggestId = 0;
+	props.taskLists.forEach((taskList) => {
+		if (taskList.id > biggestId) {
+			biggestId = taskList.id;
+		}
+	});
+	const [currentTaskListId, setCurrentTaskListId] = useState<number>(biggestId + 1);
+	const [taskLists, setTaskLists] = useState<TaskListProps[]>(props.taskLists);
 	const [currentTaskListState, setCurrentTaskListState] = useState<TaskListProps>(taskLists[0]);
 
 	const changeCurrentTaskList = (currentTaskId: number) => {
@@ -20,6 +31,7 @@ function App(): JSX.Element {
 	const addNewTaskList = (taskListName: string) => {
 		setTaskLists([...taskLists, {name: taskListName, tasks: [], id: currentTaskListId}]);
 		setCurrentTaskListId(currentTaskListId + 1);
+		props.onTaskListsUpdate([...taskLists, {name: taskListName, tasks: [], id: currentTaskListId}]);
 	}
 
 	const removeTaskList = (taskListId: number) => {
@@ -33,6 +45,7 @@ function App(): JSX.Element {
 			}
 			const updatedTaskLists = taskLists.filter((taskList) => taskList.id !== taskListId);
 			setTaskLists(updatedTaskLists);
+			props.onTaskListsUpdate(updatedTaskLists);
 		}
 	}
 
@@ -44,9 +57,8 @@ function App(): JSX.Element {
 			return taskListElement;
 		});
 		setTaskLists(updatedTaskLists);
+		props.onTaskListsUpdate(updatedTaskLists);
 	}
-
-	
 
 	return (
 		<>
