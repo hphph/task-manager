@@ -17,7 +17,7 @@ function Layout() {
 
 	const onTaskListsUpdate = (taskLists: TaskListProps[]) => {
 		setTaskLists(taskLists);
-		setcookieTaskLists('taskLists', taskLists);
+		setcookieTaskLists('taskLists', taskLists, {expires: new Date(Date.now() + 1000*60*60*24*365)});
 	}
 
 	return (
