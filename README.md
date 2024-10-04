@@ -1,4 +1,4 @@
-# Task manager
+# task-manager
 
 Projekt zaliczeniowy na przedmiot Tworzenie nowoczesnych aplikacji frontendowych 2023/2024.
 
